@@ -10,6 +10,10 @@ export default defineNuxtConfig({
     compatibilityVersion: 4
   },
 
+  runtimeConfig: {
+    githubToken: "" // can be overridden by NUXT_GITHUB_TOKEN environment variable
+  },
+
   vite: {
     plugins: [tailwindcss()]
   },
