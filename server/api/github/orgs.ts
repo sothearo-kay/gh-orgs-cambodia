@@ -1,11 +1,12 @@
-import { GitHubSearchResponse } from "~~/types/github";
+import type { GitHubSearchResponse } from "~/types/github";
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig();
+  const body = await readBody<{ after?: string }>(event);
 
   const query = `
-    query() {
-      search(query: "type:org location:cambodia", type: USER, first: 100) {
+    query($after: String) {
+      search(query: "type:org location:cambodia", type: USER, first: 10, after: $after) {
         edges {
           node {
             ... on Organization {
@@ -14,6 +15,11 @@ export default defineEventHandler(async (event) => {
               location
             }
           }
+          cursor
+        }
+        pageInfo {
+          endCursor
+          hasNextPage
         }
       }
     }
@@ -24,10 +30,19 @@ export default defineEventHandler(async (event) => {
     headers: {
       Authorization: `Bearer ${config.githubToken}`
     },
-    body: { query }
+    body: {
+      query,
+      variables: {
+        after: body.after ?? null
+      }
+    }
   });
 
-  const { edges } = response.data.search;
+  const { edges, pageInfo } = response.data.search;
 
-  return edges.map((edge) => edge.node);
+  return {
+    orgs: edges.map((edge) => edge.node),
+    endCursor: pageInfo.endCursor,
+    hasNextPage: pageInfo.hasNextPage
+  };
 });
