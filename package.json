@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "gh-orgs-cambodia",
   "private": true,
   "type": "module",
   "scripts": {
@@ -7,7 +7,12 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "prepare": "husky",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write ./"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -24,10 +29,20 @@
     "eslint": "^9.27.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.4.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.0.0",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^4.1.7",
     "typescript": "^5.8.3"
+  },
+  "lint-staged": {
+    "**/*.{.js,ts,vue,tsx}": [
+      "pnpm run lint:fix"
+    ],
+    "*.json": [
+      "pnpm run format:write"
+    ]
   },
   "packageManager": "pnpm@9.4.0+sha1.9217c800d4ab947a7aee520242a7b70d64fc7638"
 }
