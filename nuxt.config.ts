@@ -18,5 +18,9 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()]
   },
 
-  modules: ["@nuxt/eslint", "@nuxt/icon", "@nuxt/image"]
+  modules: ["@nuxt/eslint", "@nuxt/icon", "@nuxt/image"],
+
+  image: {
+    domains: ["avatars.githubusercontent.com"]
+  }
 });

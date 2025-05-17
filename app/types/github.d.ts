@@ -2,6 +2,7 @@ export interface GitHubOrganization {
   login: string;
   name: string;
   location: string;
+  avatarUrl: string;
 }
 
 export interface SearchEdge {

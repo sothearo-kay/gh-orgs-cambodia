@@ -6,13 +6,14 @@ export default defineEventHandler(async (event) => {
 
   const query = `
     query($after: String) {
-      search(query: "type:org location:cambodia", type: USER, first: 10, after: $after) {
+      search(query: "type:org location:cambodia", type: USER, first: 100, after: $after) {
         edges {
           node {
             ... on Organization {
               login
               name
               location
+              avatarUrl
             }
           }
           cursor
