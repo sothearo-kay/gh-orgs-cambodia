@@ -31,6 +31,6 @@ function loadMore() {
         <strong>{{ org.login }}</strong> — {{ org.name }} ({{ org.location }})
       </li>
     </ul>
-    <button @click="loadMore" :disabled="!hasNextPage">Load More</button>
+    <button :disabled="!hasNextPage" @click="loadMore">Load More</button>
   </div>
 </template>

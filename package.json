@@ -10,21 +10,24 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@nuxt/eslint": "1.4.0",
-    "@nuxt/icon": "1.13.0",
-    "@nuxt/image": "1.10.0",
-    "@tailwindcss/vite": "^4.1.7",
-    "eslint": "^9.0.0",
+    "clsx": "^2.1.1",
     "nuxt": "^3.17.3",
-    "tailwindcss": "^4.1.7",
+    "tailwind-merge": "^3.3.0",
     "vue": "^3.5.13",
     "vue-router": "^4.5.1"
   },
-  "packageManager": "pnpm@9.4.0+sha1.9217c800d4ab947a7aee520242a7b70d64fc7638",
   "devDependencies": {
-    "@vueuse/core": "^13.2.0",
-    "@vueuse/nuxt": "^13.2.0",
+    "@nuxt/eslint": "^1.4.0",
+    "@nuxt/icon": "1.13.0",
+    "@nuxt/image": "1.10.0",
+    "@tailwindcss/vite": "^4.1.7",
+    "eslint": "^9.27.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.4.0",
     "prettier": "^3.5.3",
-    "prettier-plugin-tailwindcss": "^0.6.11"
-  }
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "tailwindcss": "^4.1.7",
+    "typescript": "^5.8.3"
+  },
+  "packageManager": "pnpm@9.4.0+sha1.9217c800d4ab947a7aee520242a7b70d64fc7638"
 }
