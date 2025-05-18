@@ -1,8 +1,12 @@
-export interface GitHubOrganization {
+// Search
+export interface GitHubUserBase {
   login: string;
-  name: string;
-  location: string;
+  name: string | null;
   avatarUrl: string;
+}
+
+export interface GitHubOrganization extends GitHubUserBase {
+  location: string;
 }
 
 export interface SearchEdge {
@@ -21,6 +25,26 @@ export interface GitHubSearchResponse {
       userCount: number;
       edges: SearchEdge[];
       pageInfo: PageInfo;
+    };
+  };
+}
+
+// Detail
+export interface GitHubOrgDetail extends GitHubUserBase {
+  description: string | null;
+  url: string;
+}
+
+export interface GitHubOrgMember extends GitHubUserBase {
+  url: string;
+}
+
+export interface GitHubOrgDetailResponse {
+  data: {
+    organization: GitHubOrgDetail & {
+      membersWithRole: {
+        nodes: GitHubOrgMember[];
+      };
     };
   };
 }

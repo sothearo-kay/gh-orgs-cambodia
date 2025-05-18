@@ -35,20 +35,27 @@ function loadMore() {
 
 <template>
   <div class="container py-16">
+    <div>
+      <h1></h1>
+      <p></p>
+    </div>
+
     <div class="sticky top-4 z-10 w-max">
-      <p class="rounded border bg-white px-4 py-2 text-sm text-neutral-500 shadow-2xs">
+      <p class="rounded border bg-white px-4 py-2 text-sm text-neutral-500 shadow-xs">
         Showing
         <span class="font-medium text-neutral-800">{{ orgs.length }}</span> of
         <span class="font-medium text-neutral-800">{{ totalCount }}</span> organizations
       </p>
     </div>
 
-    <ul class="mt-6 grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-6">
+    <ul class="mt-6 grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-x-6 gap-y-10">
       <li v-for="(org, idx) in orgs" :key="org.login" class="relative">
-        <ui-avatar :src="org.avatarUrl" :alt="`${org.login}'s avatar`" class="border shadow-2xs" />
-        <p class="absolute right-0 -bottom-2 rounded bg-neutral-100 px-1.5">
-          <span class="text-neutral-500">#</span>{{ idx + 1 }}
-        </p>
+        <button v-transition-link="`/orgs/${org.login}`" type="button" class="block size-full">
+          <ui-avatar :src="org.avatarUrl" :alt="`${org.login}'s avatar`" />
+          <p class="absolute -right-2 -bottom-2 rounded bg-neutral-100 px-1.5">
+            <span class="text-neutral-500">#</span>{{ idx + 1 }}
+          </p>
+        </button>
       </li>
     </ul>
 
