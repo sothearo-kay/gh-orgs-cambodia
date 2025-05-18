@@ -7,6 +7,7 @@ export default defineEventHandler(async (event) => {
   const query = `
     query($after: String) {
       search(query: "type:org location:cambodia", type: USER, first: 100, after: $after) {
+        userCount,
         edges {
           node {
             ... on Organization {
@@ -39,9 +40,10 @@ export default defineEventHandler(async (event) => {
     }
   });
 
-  const { edges, pageInfo } = response.data.search;
+  const { userCount, edges, pageInfo } = response.data.search;
 
   return {
+    totalCount: userCount,
     orgs: edges.map((edge) => edge.node),
     endCursor: pageInfo.endCursor,
     hasNextPage: pageInfo.hasNextPage

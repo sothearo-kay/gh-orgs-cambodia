@@ -18,6 +18,7 @@ export interface PageInfo {
 export interface GitHubSearchResponse {
   data: {
     search: {
+      userCount: number;
       edges: SearchEdge[];
       pageInfo: PageInfo;
     };
