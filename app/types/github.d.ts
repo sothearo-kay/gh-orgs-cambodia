@@ -57,3 +57,12 @@ export interface GitHubOrgMembersResponse {
     };
   };
 }
+
+export interface GitHubRepoStargazerResponse {
+  data: {
+    repository: {
+      stargazerCount: number;
+      url: string;
+    };
+  };
+}

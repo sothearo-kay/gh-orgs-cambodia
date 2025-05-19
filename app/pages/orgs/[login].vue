@@ -66,20 +66,28 @@ function goToPrevPage() {
 
 <template>
   <div class="container py-16">
-    <div class="grid gap-6 md:grid-cols-[400px_1fr]">
-      <div v-if="orgData" class="flex flex-col items-center rounded-lg">
+    <div class="space-y-6 divide-y">
+      <div v-if="orgData" class="flex gap-6 pb-6">
         <ui-avatar :size="150" :src="orgData.avatarUrl" :alt="`${orgData.login}'s avatar`" />
-        <a :href="orgData.url" target="_blank" class="flex items-center">
-          {{ orgData.name }}
-          <Icon name="lucide:github" class="ml-2 h-5 w-5" />
-        </a>
-        <nuxt-link to="/" class="flex items-center">
-          <Icon name="lucide:arrow-left" class="mr-2 h-5 w-5" />
-          go to homepage
-        </nuxt-link>
+        <div class="flex flex-col">
+          <div>
+            <h1 class="text-2xl font-bold">{{ orgData.name }}</h1>
+            <a :href="orgData.url" target="_blank"> @{{ orgData.login }} </a>
+            <p class="mt-1 text-neutral-500">
+              {{ orgData.description }}
+            </p>
+          </div>
+          <nuxt-link to="/" class="mt-auto flex items-center">
+            <ui-button variant="outline" rounded="md">
+              <Icon name="lucide:chevron-left" class="mr-2 h-5 w-5" />
+              Go to homepage
+            </ui-button>
+          </nuxt-link>
+        </div>
       </div>
 
-      <div v-if="members.length">
+      <div v-if="members.length" class="space-y-3">
+        <h3 class="text-lg font-semibold">Team Members</h3>
         <ul class="space-y-4">
           <li v-for="member in members" :key="member.login">
             <a :href="member.url" target="_blank">
@@ -98,7 +106,7 @@ function goToPrevPage() {
       </div>
     </div>
 
-    <div v-if="hasPreviousPage || hasNextPage" class="mt-10 flex items-center justify-center">
+    <div v-if="hasPreviousPage || hasNextPage" class="mt-6 flex items-center justify-center">
       <ui-button
         variant="ghost"
         :loading="pending && !!pageInfo.before"

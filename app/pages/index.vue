@@ -1,20 +1,27 @@
 <script setup lang="ts">
 import type { GitHubOrganization } from "~/types/github";
 
+const owner = "sothearo-kay";
+const repo = "gh-orgs-cambodia";
+
 const totalCount = ref<number>(0);
 const orgs = ref<GitHubOrganization[]>([]);
 const hasNextPage = ref(false);
 const after = ref<string | null>(null);
 
-const { data, pending } = await useAsyncData(
+const { data: orgsData, pending } = await useAsyncData(
   () => `orgs-${after.value ?? "first"}`,
   () => $fetch("/api/github/orgs", { method: "POST", body: { after: after.value } })
 );
 
-watchEffect(() => {
-  if (!data.value) return;
+const { data: repoData } = await useAsyncData(`github-repo-stars-${repo}`, () =>
+  $fetch(`/api/github/repo/${owner}/${repo}/stars`)
+);
 
-  const d = data.value;
+watchEffect(() => {
+  if (!orgsData.value) return;
+
+  const d = orgsData.value;
   orgs.value = [...orgs.value, ...d.orgs];
   hasNextPage.value = d.hasNextPage;
 
@@ -24,17 +31,26 @@ watchEffect(() => {
 });
 
 function loadMore() {
-  if (hasNextPage.value && data.value?.endCursor) {
-    after.value = data.value.endCursor;
+  if (hasNextPage.value && orgsData.value?.endCursor) {
+    after.value = orgsData.value.endCursor;
   }
 }
 </script>
 
 <template>
-  <div class="container py-16">
-    <div>
-      <h1></h1>
-      <p></p>
+  <div class="container py-10">
+    <div class="my-6 flex items-end justify-between">
+      <div class="space-y-1">
+        <h1 class="text-3xl font-bold">GitHub Organizations Cambodia</h1>
+        <p class="text-neutral-500">
+          Curated list of tech organizations and communities in Cambodia
+        </p>
+      </div>
+      <div v-if="repoData" class="text-center">
+        <a :href="repoData.url" target="_blank">
+          <ui-button variant="outline" rounded="md">⭐ Star {{ repoData.stars }}</ui-button>
+        </a>
+      </div>
     </div>
 
     <div class="sticky top-4 z-10 w-max">
@@ -58,7 +74,7 @@ function loadMore() {
       </li>
     </ul>
 
-    <div class="mt-6 text-center">
+    <div class="mt-10 text-center">
       <ui-button
         v-if="hasNextPage"
         variant="outline"
