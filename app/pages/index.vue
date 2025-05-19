@@ -39,7 +39,7 @@ function loadMore() {
 
 <template>
   <div class="container py-6">
-    <div class="sm:my-6 sm:flex sm:justify-between sm:gap-6">
+    <div class="sm:mb-6 sm:flex sm:justify-between sm:gap-6">
       <div class="space-y-1" md:col-start-1 md:row-start-1>
         <h1 class="text-3xl font-bold">GitHub Organizations Cambodia</h1>
         <p class="text-neutral-500">
