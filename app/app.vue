@@ -3,4 +3,5 @@
 <template>
   <NuxtLoadingIndicator color="#3b82f6" />
   <NuxtPage />
+  <ui-tooltip />
 </template>

@@ -70,7 +70,7 @@ function goToPrevPage() {
       <div v-if="orgData" class="flex gap-6 pb-6">
         <ui-avatar :size="150" :src="orgData.avatarUrl" :alt="`${orgData.login}'s avatar`" />
         <div class="flex flex-col">
-          <div>
+          <div class="mb-2">
             <h1 class="text-2xl font-bold">{{ orgData.name }}</h1>
             <a :href="orgData.url" target="_blank"> @{{ orgData.login }} </a>
             <p class="mt-1 text-neutral-500">
