@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
   const query = `
     query($after: String) {
       search(query: "type:org location:cambodia", type: USER, first: 100, after: $after) {
-        userCount,
+        userCount
         edges {
           node {
             ... on Organization {
@@ -34,9 +34,7 @@ export default defineEventHandler(async (event) => {
     },
     body: {
       query,
-      variables: {
-        after: body.after ?? null
-      }
+      variables: { after: body.after ?? null }
     }
   });
 

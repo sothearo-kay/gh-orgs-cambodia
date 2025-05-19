@@ -17,7 +17,7 @@ const {
 const variantMap = {
   primary: "bg-neutral-900 text-white hover:bg-neutral-800",
   outline: "border border-neutral-300 text-neutral-800 bg-white hover:bg-neutral-100",
-  ghost: "text-neutral-700 hover:bg-neutral-100"
+  ghost: `text-blue-500 border border-transparent hover:enabled:border-neutral-200 disabled:text-neutral-400`
 };
 
 const roundedMap = {
@@ -33,7 +33,7 @@ const roundedMap = {
     :class="
       cn(
         'inline-flex items-center justify-center px-4 py-2 text-base font-medium',
-        'hover:bg-neutral-100disabled:cursor-not-allowed transition-colors',
+        'transition-colors disabled:cursor-not-allowed',
         variantMap[variant],
         roundedMap[rounded],
         { 'h-10 w-10 p-0': loading }
