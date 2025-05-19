@@ -16,7 +16,9 @@ export interface SearchEdge {
 
 export interface PageInfo {
   endCursor: string;
+  startCursor: string;
   hasNextPage: boolean;
+  hasPreviousPage: boolean;
 }
 
 export interface GitHubSearchResponse {
@@ -41,9 +43,16 @@ export interface GitHubOrgMember extends GitHubUserBase {
 
 export interface GitHubOrgDetailResponse {
   data: {
-    organization: GitHubOrgDetail & {
+    organization: GitHubOrgDetail;
+  };
+}
+
+export interface GitHubOrgMembersResponse {
+  data: {
+    organization: {
       membersWithRole: {
         nodes: GitHubOrgMember[];
+        pageInfo: PageInfo;
       };
     };
   };

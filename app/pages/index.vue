@@ -11,20 +11,17 @@ const { data, pending } = await useAsyncData(
   () => $fetch("/api/github/orgs", { method: "POST", body: { after: after.value } })
 );
 
-watch(
-  data,
-  (d) => {
-    if (!d) return;
+watchEffect(() => {
+  if (!data.value) return;
 
-    orgs.value = [...orgs.value, ...d.orgs];
-    hasNextPage.value = d.hasNextPage;
+  const d = data.value;
+  orgs.value = [...orgs.value, ...d.orgs];
+  hasNextPage.value = d.hasNextPage;
 
-    if (d.totalCount) {
-      totalCount.value = d.totalCount;
-    }
-  },
-  { immediate: true }
-);
+  if (d.totalCount) {
+    totalCount.value = d.totalCount;
+  }
+});
 
 function loadMore() {
   if (hasNextPage.value && data.value?.endCursor) {
@@ -41,7 +38,9 @@ function loadMore() {
     </div>
 
     <div class="sticky top-4 z-10 w-max">
-      <p class="rounded border bg-white px-4 py-2 text-sm text-neutral-500 shadow-xs">
+      <p
+        class="rounded border bg-white/80 px-4 py-2 text-sm text-neutral-500 shadow-xs backdrop-blur-md"
+      >
         Showing
         <span class="font-medium text-neutral-800">{{ orgs.length }}</span> of
         <span class="font-medium text-neutral-800">{{ totalCount }}</span> organizations
@@ -50,12 +49,12 @@ function loadMore() {
 
     <ul class="mt-6 grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-x-6 gap-y-10">
       <li v-for="(org, idx) in orgs" :key="org.login" class="relative">
-        <button v-transition-link="`/orgs/${org.login}`" type="button" class="block size-full">
+        <nuxt-link :to="`/orgs/${org.login}`">
           <ui-avatar :src="org.avatarUrl" :alt="`${org.login}'s avatar`" />
           <p class="absolute -right-2 -bottom-2 rounded bg-neutral-100 px-1.5">
             <span class="text-neutral-500">#</span>{{ idx + 1 }}
           </p>
-        </button>
+        </nuxt-link>
       </li>
     </ul>
 
