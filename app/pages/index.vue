@@ -46,11 +46,17 @@ function loadMore() {
           Curated list of tech organizations and communities in Cambodia
         </p>
       </div>
-      <div v-if="repoData" class="text-center">
-        <a :href="repoData.url" target="_blank">
-          <ui-button variant="outline" rounded="md">⭐ Star {{ repoData.stars }}</ui-button>
-        </a>
-      </div>
+      <a v-if="repoData" :href="repoData.url" target="_blank" class="inline-block">
+        <ui-button variant="outline" rounded="md">
+          <Icon
+            mode="svg"
+            name="lucide:star"
+            class="mr-2 h-5 w-5 text-yellow-400"
+            :customize="addFillColor"
+          />
+          Star {{ repoData.stars }}
+        </ui-button>
+      </a>
     </div>
 
     <div class="sticky top-4 z-10 w-max">
@@ -63,9 +69,9 @@ function loadMore() {
       </p>
     </div>
 
-    <ul class="mt-6 grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-x-6 gap-y-10">
+    <ul class="mt-10 grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-x-6 gap-y-10">
       <li v-for="(org, idx) in orgs" :key="org.login" class="relative">
-        <nuxt-link :to="`/orgs/${org.login}`">
+        <nuxt-link v-tooltip="org.name" :to="`/orgs/${org.login}`">
           <ui-avatar :src="org.avatarUrl" :alt="`${org.login}'s avatar`" />
           <p class="absolute -right-2 -bottom-2 rounded bg-neutral-100 px-1.5">
             <span class="text-neutral-500">#</span>{{ idx + 1 }}
