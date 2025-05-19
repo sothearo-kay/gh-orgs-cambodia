@@ -66,8 +66,8 @@ function goToPrevPage() {
 
 <template>
   <div class="container py-6">
-    <div class="grid gap-6 max-sm:divide-y sm:grid-cols-[440px_1fr] sm:divide-x">
-      <div v-if="orgData" class="flex flex-col max-sm:items-center max-sm:pb-6 sm:pe-6">
+    <div class="grid gap-10 max-sm:divide-y sm:grid-cols-[440px_1fr] sm:divide-x">
+      <div v-if="orgData" class="flex flex-col max-sm:items-center max-sm:pb-10 sm:pe-10">
         <ui-avatar
           :size="150"
           :src="orgData.avatarUrl"
@@ -88,7 +88,7 @@ function goToPrevPage() {
       </div>
 
       <div v-if="members.length" class="space-y-3">
-        <h3 class="text-sm font-semibold">Team Members</h3>
+        <h3 class="text-xl font-semibold">Team Members</h3>
         <ul class="space-y-4">
           <li v-for="member in members" :key="member.login">
             <a :href="member.url" target="_blank">
@@ -104,6 +104,13 @@ function goToPrevPage() {
             </a>
           </li>
         </ul>
+      </div>
+      <div v-else class="py-16 text-center">
+        <Icon name="lucide:shredder" class="mx-auto mb-4 h-20 w-20 text-blue-500" />
+        <h2 class="mb-1 text-xl font-semibold">No members found</h2>
+        <p class="text-base text-neutral-500">
+          It looks like this organization doesn’t have any public members yet.
+        </p>
       </div>
     </div>
 

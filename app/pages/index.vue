@@ -53,23 +53,28 @@ function loadMore() {
         v-if="repoData"
         :href="repoData.url"
         target="_blank"
-        class="float-end inline-block sm:self-end"
+        class="group float-end inline-flex items-center sm:self-end"
       >
-        <ui-button variant="outline" rounded="md">
+        <ui-button variant="outline" rounded="md" class="rounded-r-none text-sm">
           <Icon
             mode="svg"
             name="lucide:star"
             class="mr-2 h-5 w-5 text-yellow-400"
             :customize="addFillColor"
           />
-          Star {{ repoData.stars }}
+          Star
         </ui-button>
+        <span
+          class="rounded-r-md border border-l-0 px-3 py-1.5 transition-colors group-hover:text-blue-500"
+        >
+          {{ repoData.stars }}
+        </span>
       </a>
     </div>
 
     <div class="sticky top-4 z-10 w-max">
       <p
-        class="rounded border bg-white/80 px-4 py-2 text-sm text-neutral-500 shadow-xs backdrop-blur-md"
+        class="rounded border bg-white/80 px-3 py-2 text-sm text-neutral-500 shadow-xs backdrop-blur-md"
       >
         Showing
         <span class="font-medium text-neutral-800">{{ orgs.length }}</span> of
@@ -77,7 +82,7 @@ function loadMore() {
       </p>
     </div>
 
-    <ul class="mt-10 grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-x-6 gap-y-10">
+    <ul class="mt-10 grid grid-cols-[repeat(auto-fill,minmax(85px,1fr))] gap-10">
       <li v-for="(org, idx) in orgs" :key="org.login" class="relative">
         <nuxt-link v-tooltip="org.name" :to="`/orgs/${org.login}`">
           <ui-avatar :src="org.avatarUrl" :alt="`${org.login}'s avatar`" />
