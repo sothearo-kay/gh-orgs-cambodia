@@ -7,8 +7,8 @@ const { text, visible, position } = useTooltip();
     <div
       v-show="visible"
       :class="[
-        'absolute z-50 rounded bg-black/80 px-3 py-1 text-sm font-medium text-white shadow-lg backdrop-blur-md',
-        '-translate-x-1/2'
+        'absolute z-50 -translate-x-1/2 border border-black bg-black/80',
+        'rounded px-3 py-1 text-sm font-medium whitespace-nowrap text-white shadow-lg'
       ]"
       :style="{ top: `${position.y}px`, left: `${position.x}px` }"
     >

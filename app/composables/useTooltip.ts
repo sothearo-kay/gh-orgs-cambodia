@@ -14,7 +14,7 @@ export const useTooltip = () => {
     position.x = rect.left + rect.width / 2 + window.scrollX;
 
     // place Y slightly above the element
-    position.y = rect.top + window.scrollY - 30; // you can tweak `-30`
+    position.y = rect.top + window.scrollY - 32;
 
     text.value = content;
     visible.value = true;
