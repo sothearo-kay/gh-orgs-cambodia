@@ -40,7 +40,7 @@ const { data: membersData, pending } = await useAsyncData(
 watchEffect(() => {
   if (membersData.value) {
     members.value = membersData.value.members;
-    hasNextPage.value = membersData.value.hasPreviousPage;
+    hasPreviousPage.value = membersData.value.hasPreviousPage;
     hasNextPage.value = membersData.value.hasNextPage;
   }
 });
@@ -65,29 +65,30 @@ function goToPrevPage() {
 </script>
 
 <template>
-  <div class="container py-16">
-    <div class="space-y-6 divide-y">
-      <div v-if="orgData" class="flex gap-6 pb-6">
-        <ui-avatar :size="150" :src="orgData.avatarUrl" :alt="`${orgData.login}'s avatar`" />
-        <div class="flex flex-col">
-          <div class="mb-2">
-            <h1 class="text-2xl font-bold">{{ orgData.name }}</h1>
-            <a :href="orgData.url" target="_blank"> @{{ orgData.login }} </a>
-            <p class="mt-1 text-neutral-500">
-              {{ orgData.description }}
-            </p>
-          </div>
-          <nuxt-link to="/" class="mt-auto flex items-center">
-            <ui-button variant="outline" rounded="md">
-              <Icon name="lucide:chevron-left" class="mr-2 h-5 w-5" />
-              Go to homepage
-            </ui-button>
-          </nuxt-link>
-        </div>
+  <div class="container py-6">
+    <div class="grid gap-6 max-sm:divide-y sm:grid-cols-[440px_1fr] sm:divide-x">
+      <div v-if="orgData" class="flex flex-col max-sm:items-center max-sm:pb-6 sm:pe-6">
+        <ui-avatar
+          :size="150"
+          :src="orgData.avatarUrl"
+          :alt="`${orgData.login}'s avatar`"
+          class="mb-4"
+        />
+        <h1 class="text-2xl font-bold">{{ orgData.name }}</h1>
+        <a :href="orgData.url" target="_blank"> @{{ orgData.login }} </a>
+        <p class="mt-2 text-neutral-500">
+          {{ orgData.description }}
+        </p>
+        <nuxt-link class="mt-4" to="/">
+          <ui-button variant="outline" rounded="md">
+            <Icon name="lucide:chevron-left" class="mr-2 h-5 w-5" />
+            Go to homepage
+          </ui-button>
+        </nuxt-link>
       </div>
 
       <div v-if="members.length" class="space-y-3">
-        <h3 class="text-lg font-semibold">Team Members</h3>
+        <h3 class="text-sm font-semibold">Team Members</h3>
         <ul class="space-y-4">
           <li v-for="member in members" :key="member.login">
             <a :href="member.url" target="_blank">

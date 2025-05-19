@@ -38,15 +38,23 @@ function loadMore() {
 </script>
 
 <template>
-  <div class="container py-10">
-    <div class="my-6 flex items-end justify-between">
-      <div class="space-y-1">
+  <div class="container py-6">
+    <div class="sm:my-6 sm:flex sm:justify-between sm:gap-6">
+      <div class="space-y-1" md:col-start-1 md:row-start-1>
         <h1 class="text-3xl font-bold">GitHub Organizations Cambodia</h1>
         <p class="text-neutral-500">
           Curated list of tech organizations and communities in Cambodia
         </p>
       </div>
-      <a v-if="repoData" :href="repoData.url" target="_blank" class="inline-block">
+
+      <div class="py-3 sm:hidden" />
+
+      <a
+        v-if="repoData"
+        :href="repoData.url"
+        target="_blank"
+        class="float-end inline-block sm:self-end"
+      >
         <ui-button variant="outline" rounded="md">
           <Icon
             mode="svg"
