@@ -10,7 +10,7 @@ A curated view of GitHub organizations based in Cambodia, automatically sourced 
 
 ## Preview
 
-![App Screenshot](./preview.jpg)
+![Preview](./public/preview.jpg)
 
 ---
 
