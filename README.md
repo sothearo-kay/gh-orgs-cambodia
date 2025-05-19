@@ -1,75 +1,27 @@
-# Nuxt Minimal Starter
+# GitHub Organizations Cambodia
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+A curated view of GitHub organizations based in Cambodia, automatically sourced from GitHub's public API based on location metadata.
 
-## Setup
+## Features
 
-Make sure to install dependencies:
+- [x] Browse a list of GitHub organizations linked to Cambodia.
+- [x] Discover active developer communities.
+- [x] data fetched directly from GitHub's public API.
 
-```bash
-# npm
-npm install
+## Preview
 
-# pnpm
-pnpm install
+![App Screenshot](./preview.jpg)
 
-# yarn
-yarn install
+---
 
-# bun
-bun install
-```
+## Contribute
 
-## Development Server
+We welcome contributions!, feel free to open an issue to suggest improvements or submit a pull request to enhance the app or its logic.
 
-Start the development server on `http://localhost:3000`:
+---
 
-```bash
-# npm
-npm run dev
+## License
 
-# pnpm
-pnpm dev
+This project is licensed under the MIT License.
 
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+---
