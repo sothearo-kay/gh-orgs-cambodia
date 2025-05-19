@@ -2,15 +2,15 @@
 
 A curated view of GitHub organizations based in Cambodia, automatically sourced from GitHub's public API based on location metadata.
 
+![Preview](./public/preview.jpg)
+
+---
+
 ## Features
 
 - [x] Browse a list of GitHub organizations linked to Cambodia.
 - [x] Discover active developer communities.
 - [x] data fetched directly from GitHub's public API.
-
-## Preview
-
-![Preview](./public/preview.jpg)
 
 ---
 
