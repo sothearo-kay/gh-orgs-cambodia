@@ -21,6 +21,7 @@ export default defineNuxtConfig({
   modules: ["@nuxt/eslint", "@nuxt/icon", "@nuxt/image"],
 
   image: {
+    provider: "ipx",
     domains: ["avatars.githubusercontent.com"]
   }
 });
