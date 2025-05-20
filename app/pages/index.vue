@@ -49,10 +49,10 @@ function loadMore() {
 
       <div class="py-3 sm:hidden" />
 
-      <a
+      <nuxt-link
         v-if="repoData"
-        :href="repoData.url"
-        target="_blank"
+        :to="repoData?.url"
+        external
         class="group float-end inline-flex items-center sm:self-end"
       >
         <ui-button variant="outline" rounded="md" class="rounded-r-none text-sm">
@@ -69,7 +69,7 @@ function loadMore() {
         >
           {{ repoData.stars }}
         </span>
-      </a>
+      </nuxt-link>
     </div>
 
     <div class="sticky top-4 z-10 w-max">

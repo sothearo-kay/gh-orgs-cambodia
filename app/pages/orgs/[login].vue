@@ -75,7 +75,7 @@ function goToPrevPage() {
           class="mb-4"
         />
         <h1 class="text-2xl font-bold">{{ orgData.name }}</h1>
-        <a :href="orgData.url" target="_blank"> @{{ orgData.login }} </a>
+        <nuxt-link :to="orgData.url" external> @{{ orgData.login }} </nuxt-link>
         <p class="mt-2 text-neutral-500">
           {{ orgData.description }}
         </p>
@@ -91,7 +91,7 @@ function goToPrevPage() {
         <h3 class="text-xl font-semibold">Team Members</h3>
         <ul class="space-y-4">
           <li v-for="member in members" :key="member.login">
-            <a :href="member.url" target="_blank">
+            <nuxt-link :to="member.url" external>
               <div class="flex items-center gap-x-4 px-3 transition-colors hover:bg-neutral-200">
                 <ui-avatar
                   rounded="full"
@@ -101,7 +101,7 @@ function goToPrevPage() {
                 />
                 <p>{{ member.name || member.login }}</p>
               </div>
-            </a>
+            </nuxt-link>
           </li>
         </ul>
       </div>
