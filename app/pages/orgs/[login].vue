@@ -66,8 +66,8 @@ function goToPrevPage() {
 
 <template>
   <div class="container py-6">
-    <div class="grid gap-10 max-sm:divide-y sm:grid-cols-[440px_1fr] sm:divide-x">
-      <div v-if="orgData" class="flex flex-col max-sm:items-center max-sm:pb-10 sm:pe-10">
+    <div class="grid gap-8 max-sm:divide-y sm:grid-cols-[440px_1fr] sm:divide-x">
+      <div v-if="orgData" class="flex flex-col max-sm:items-center max-sm:pb-8 sm:pe-8">
         <ui-avatar
           :size="150"
           :src="orgData.avatarUrl"
@@ -105,7 +105,7 @@ function goToPrevPage() {
           </li>
         </ul>
       </div>
-      <div v-else class="py-16 text-center">
+      <div v-else class="py-16 text-center max-sm:py-8">
         <Icon name="lucide:shredder" class="mx-auto mb-4 h-20 w-20 text-blue-500" />
         <h2 class="mb-1 text-xl font-semibold">No members found</h2>
         <p class="text-base text-neutral-500">
